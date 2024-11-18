@@ -1,1 +1,11 @@
-<p>busca-filmes works!</p>
+<h1>Buscar Filme</h1>
+<form [formGroup]="formBusca">
+<label for="titulo">Título: </label>
+<input  type="text" 
+        id="titulo" 
+        name="titulo"
+        formControlName="titulo"> 
+<input type="button" value="Buscar"
+        [disabled]="formBusca.invalid"
+        (click)="buscar()">
+</form>
