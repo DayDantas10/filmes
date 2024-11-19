@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, 
         FormGroup, 
         Validators } from '@angular/forms';
+import { Filme } from '../filme';
+import { FilmeService } from '../filme.service';
 
 @Component({
   selector: 'app-busca-filmes',
@@ -11,7 +13,9 @@ import { FormBuilder,
 export class BuscaFilmesComponent {
 
   formBusca: FormGroup 
-  constructor(private fb: FormBuilder){
+  filme: Filme | undefined
+  constructor(private fb: FormBuilder,
+              private fs: FilmeService){
     this.formBusca = this.fb.group({
       titulo: ['', [Validators.required,
                     Validators.minLength(2)]] /*Digitar pelo menos 1 letra*/
@@ -20,8 +24,11 @@ export class BuscaFilmesComponent {
 
   buscar(){
     const titulo = this.formBusca.value.titulo /*retorna um objeto json*/
-
-    console.log(titulo)
+    this.fs.buscarPeloTitulo(titulo).subscribe(
+      res=> {
+        this.filme = res /**resposta da requisição */
+      }
+    )
   }
 
 }

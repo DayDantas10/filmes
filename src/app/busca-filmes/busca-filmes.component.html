@@ -9,3 +9,13 @@
         [disabled]="formBusca.invalid"
         (click)="buscar()">
 </form>
+
+<div *ngIf="filme != undefined">
+        <img [src]="filme.Poster" alt="Poster">]
+        <ul>
+        <li>{{filme.Title}}</li>
+        <li>Diretor: {{filme.Director}}</li>
+        <li>Gênero: {{filme.Genre}}</li>
+        <li>Ano: {{filme.Year}}</li>
+        </ul>
+</div>
