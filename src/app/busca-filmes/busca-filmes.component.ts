@@ -25,8 +25,8 @@ export class BuscaFilmesComponent {
   buscar(){
     const titulo = this.formBusca.value.titulo /*retorna um objeto json*/
     this.fs.buscarPeloTitulo(titulo).subscribe(
-      res=> {
-        this.filme = res /**resposta da requisição */
+      res=> { /** resposta concreta ou vazia */
+        this.filme = res /**resposta da requisição atribuída ao objeto filme */
       }
     )
   }
